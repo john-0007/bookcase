@@ -1,0 +1,14 @@
+node_modules
+
+dist/*
+!dist/_redirects
+!dist/_headers
+!dist/OneSignalSDKWorker.js
+!dist/OneSignalSDKUpdaterWorker.js
+
+
+cypress/integration/examples
+
+.cache
+*.log
+.DS_Store

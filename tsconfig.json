@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["./app/*"],
+      "~": ["~"]
+    },
+    "types": ["node"],
+    "target": "es2020",
+    "module": "esnext",
+    "sourceMap": true,
+    "outDir": "./build/",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "jsx": "react",
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules", "dist"]
+}
