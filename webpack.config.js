@@ -44,12 +44,4 @@ module.exports = {
       filename: './src/yourfile.css',
     }),
   ],
-  // resolve: {
-  //   plugins: [
-  //     new TsconfigPathsPlugin({
-  //       /* options: see below */
-  //       configFile: 'tsconfig.json',
-  //     }),
-  //   ],
-  // },
 }
