@@ -1,11 +1,14 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { useState } from 'react'
-import { Logo } from '~components/logo'
+import { Logo, Button } from '~components'
 import { Dialog } from '@reach/dialog'
 import LoginForm from './login_form'
+import { Modal, ModalOpenButton, ModalContents } from '~components/model'
 
-import '@reach/dialog/styles.css'
-import 'bootstrap/dist/css/bootstrap-reboot.css'
+// import '@reach/dialog/styles.css'
+// import 'bootstrap/dist/css/bootstrap-reboot.css'
 
 enum ModelStateEnum {
   None = 'none',
@@ -27,37 +30,48 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: '100vh',
+      }}
+    >
       <Logo width='80' height='80' />
       <h1>Bookshelf</h1>
-      <div>
-        <button onClick={() => setOpenModal(ModelStateEnum.Login)}>
-          Login
-        </button>
+      <div
+        css={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+          gridGap: '0.75rem',
+        }}
+      >
+        <Modal>
+          <ModalOpenButton>
+            <Button variant='primary'>Login</Button>
+          </ModalOpenButton>
+          <ModalContents aria-label='Login form' title='Login'>
+            <LoginForm
+              onSubmit={login}
+              submitButton={<Button variant='primary'>Login</Button>}
+            />
+          </ModalContents>
+        </Modal>
+        <Modal>
+          <ModalOpenButton>
+            <Button variant='secondary'>Register</Button>
+          </ModalOpenButton>
+          <ModalContents aria-label='Registration form' title='Register'>
+            <LoginForm
+              onSubmit={register}
+              submitButton={<Button variant='secondary'>Register</Button>}
+            />
+          </ModalContents>
+        </Modal>
       </div>
-      <div>
-        <button onClick={() => setOpenModal(ModelStateEnum.Register)}>
-          Register
-        </button>
-      </div>
-      <Dialog aria-label='Login from' isOpen={openModal === 'login'}>
-        <div>
-          <button onClick={() => setOpenModal(ModelStateEnum.None)}>
-            close!
-          </button>
-        </div>
-        <h3>Login</h3>
-        <LoginForm buttonText='Login' onSubmit={login} />
-      </Dialog>
-      <Dialog aria-label='Registration from' isOpen={openModal === 'register'}>
-        <div>
-          <button onClick={() => setOpenModal(ModelStateEnum.None)}>
-            close!
-          </button>
-        </div>
-        <h3>Register</h3>
-        <LoginForm buttonText='Register' onSubmit={register} />
-      </Dialog>
     </div>
   )
 }

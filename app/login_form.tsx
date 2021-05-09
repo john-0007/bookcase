@@ -1,12 +1,15 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { FunctionComponent, SyntheticEvent } from 'react'
+import { FormGroup, Input } from '~components'
 
 interface Iprops {
   onSubmit(values: { username: string; password: string }): void
-  buttonText: string
+  submitButton: JSX.Element
 }
 
-const LoginForm: FunctionComponent<Iprops> = ({ onSubmit, buttonText }) => {
+const LoginForm: FunctionComponent<Iprops> = ({ onSubmit, submitButton }) => {
   function handleSubmit(event: SyntheticEvent) {
     event.preventDefault()
     const target = event.target as typeof event.target & {
@@ -21,18 +24,28 @@ const LoginForm: FunctionComponent<Iprops> = ({ onSubmit, buttonText }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        '> div': {
+          margin: '10px auto',
+          width: '100%',
+          maxWidth: '300px',
+        },
+      }}
+      onSubmit={handleSubmit}
+    >
+      <FormGroup>
         <label htmlFor='username'>Username</label>
-        <input id='username' type='text' />
-      </div>
-      <div>
+        <Input id='username' type='text' />
+      </FormGroup>
+      <FormGroup>
         <label htmlFor='password'>password</label>
-        <input id='password' type='password' />
-      </div>
-      <div>
-        <button>{buttonText}</button>
-      </div>
+        <Input id='password' type='password' />
+      </FormGroup>
+      <div>{submitButton}</div>
     </form>
   )
 }
