@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { FunctionComponent, SyntheticEvent } from 'react'
-import { FormGroup, Input } from '~components'
+import { FormGroup, Input, Spinner } from '~components'
 
 interface Iprops {
   onSubmit(values: { username: string; password: string }): void
@@ -45,7 +45,9 @@ const LoginForm: FunctionComponent<Iprops> = ({ onSubmit, submitButton }) => {
         <label htmlFor='password'>password</label>
         <Input id='password' type='password' />
       </FormGroup>
-      <div>{submitButton}</div>
+      <div>
+        {submitButton} <Spinner css={{ marginLeft: 5 }} />
+      </div>
     </form>
   )
 }

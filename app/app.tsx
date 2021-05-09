@@ -3,12 +3,8 @@ import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { useState } from 'react'
 import { Logo, Button } from '~components'
-import { Dialog } from '@reach/dialog'
 import LoginForm from './login_form'
 import { Modal, ModalOpenButton, ModalContents } from '~components/model'
-
-// import '@reach/dialog/styles.css'
-// import 'bootstrap/dist/css/bootstrap-reboot.css'
 
 enum ModelStateEnum {
   None = 'none',
